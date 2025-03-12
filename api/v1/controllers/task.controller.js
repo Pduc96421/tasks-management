@@ -95,12 +95,18 @@ module.exports.changeStatus = async (req, res) => {
 // [Pacth] /api/v1/tasks/change-multi/:id
 module.exports.changeMulti = async (req, res) => {
     try {
-        const { ids, key, value} = req.body;
+        const {
+            ids,
+            key,
+            value
+        } = req.body;
 
         switch (key) {
             case "status":
                 await Task.updateMany({
-                    _id: { $in: ids },
+                    _id: {
+                        $in: ids
+                    },
                 }, {
                     status: value
                 });
@@ -109,7 +115,7 @@ module.exports.changeMulti = async (req, res) => {
                     message: "Cập nhật trạng thái thành công",
                 });
                 break;
-        
+
             default:
                 res.json({
                     code: 400,
@@ -136,6 +142,28 @@ module.exports.create = async (req, res) => {
             message: "Tạo mới thành công",
             data: data,
         });
+    } catch (error) {
+        res.json({
+            code: 400,
+            message: "Không tồn tại",
+        });
+    }
+};
+
+// [Pacth] /api/v1/tasks/edit/:id
+module.exports.edit = async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        await Task.updateOne({
+            _id: id,
+        }, req.body);
+
+        res.json({
+            code: 200,
+            message: "cập nhật thành công",
+        });
+
     } catch (error) {
         res.json({
             code: 400,
