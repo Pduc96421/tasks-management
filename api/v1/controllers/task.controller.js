@@ -1,12 +1,21 @@
 const Task = require("../models/tasks.model");
 
 const paginationHelper = require("../../../helpers/pagination");
+const searchHelper = require("../../../helpers/search");
 
 // [GET] /api/v1/tasks
 module.exports.index = async (req, res) => {
     const find = {
         deleted: false,
     }
+
+    // tìm kiếmkiếm
+    const objectSearch = searchHelper(req.query);
+
+    if (objectSearch.regex) {
+        find.title = objectSearch.regex;
+    }
+    // end tìm kiếm
 
     // pagination (phân trang)
     let initPagination = {
