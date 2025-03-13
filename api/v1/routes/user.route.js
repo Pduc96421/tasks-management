@@ -7,4 +7,6 @@ const accountValidate = require("../../../validates/account.validate");
 
 router.post("/register", accountValidate.register, controller.register);
 
+router.post("/login", accountValidate.login, controller.login);
+
 module.exports = router;
