@@ -1,6 +1,7 @@
 const express = require("express");
 const database = require("./config/database");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 require("dotenv").config();
 
@@ -15,6 +16,8 @@ database.connect();
 app.use(bodyParser.json());
 
 app.use(cors());
+
+app.use(cookieParser("Ducno96421"));
 
 // Routes Version 1
 routeApiVer1(app);

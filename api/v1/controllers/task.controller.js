@@ -1,4 +1,4 @@
-const Task = require("../models/tasks.model");
+const Task = require("../models/task.model");
 
 const paginationHelper = require("../../../helpers/pagination");
 const searchHelper = require("../../../helpers/search");
@@ -147,7 +147,7 @@ module.exports.changeMulti = async (req, res) => {
     }
 };
 
-// [Post] /api/v1/tasks/change-multi/:id
+// [Post] /api/v1/tasks/create/:id
 module.exports.create = async (req, res) => {
     try {
         const task = new Task(req.body);
