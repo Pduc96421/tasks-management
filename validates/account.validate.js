@@ -3,7 +3,6 @@ module.exports.register = (req, res, next) => {
         res.json({
             code: 400,
             message: "Vui lòng nhập họ tên",
-            token: token,
         });
         return;
     }
@@ -12,7 +11,6 @@ module.exports.register = (req, res, next) => {
         res.json({
             code: 400,
             message: "Vui lòng nhập email",
-            token: token,
         });
         return;
     }
@@ -21,7 +19,6 @@ module.exports.register = (req, res, next) => {
         res.json({
             code: 400,
             message: "Vui lòng nhập mật khẩu",
-            token: token,
         });
         return;
     }

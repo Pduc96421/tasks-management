@@ -95,11 +95,7 @@ module.exports.changeStatus = async (req, res) => {
 // [Pacth] /api/v1/tasks/change-multi/:id
 module.exports.changeMulti = async (req, res) => {
     try {
-        const {
-            ids,
-            key,
-            value
-        } = req.body;
+        const {ids, key, value} = req.body;
 
         switch (key) {
             case "status":
@@ -115,7 +111,7 @@ module.exports.changeMulti = async (req, res) => {
                     message: "Cập nhật trạng thái thành công",
                 });
                 break;
-            
+
             case "delete":
                 await Task.updateMany({
                     _id: {
@@ -188,7 +184,7 @@ module.exports.edit = async (req, res) => {
     }
 };
 
-// [Pacth] /api/v1/tasks/edit/:id
+// [Delete] /api/v1/tasks/delete/:id
 module.exports.delete = async (req, res) => {
     try {
         const id = req.params.id;
