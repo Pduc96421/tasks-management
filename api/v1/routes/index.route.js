@@ -4,12 +4,12 @@ const statusRoutes = require("./status.route");
 
 module.exports = (app) => {
 
-    const version = "/api/v1";
+  const version = "/api/v1";
+  
+  app.use(version + "/tasks", taskRoutes);
 
-    app.use(version + "/tasks", taskRoutes);
-    
-    app.use(version + "/users", userRoutes);
+  app.use(version + "/users", userRoutes);
 
-    app.use(version + "/status", statusRoutes);
-    
+  app.use(version + "/status", statusRoutes);
+
 }

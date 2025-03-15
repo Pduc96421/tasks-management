@@ -1,14 +1,14 @@
 module.exports = (query) => {
-    let objectSearch = {
-        keyword: "",
-    };
+  let objectSearch = {
+    keyword: "",
+  };
 
-    if (query.keyword){
-        objectSearch.keyword = query.keyword;
+  if (query.keyword) {
+    objectSearch.keyword = query.keyword;
 
-        const regex = new RegExp(objectSearch.keyword, "i");
-        objectSearch.regex = regex; 
-    }
+    const regex = new RegExp(objectSearch.keyword, "i");
+    objectSearch.regex = regex;
+  }
 
-    return objectSearch;
+  return objectSearch;
 };

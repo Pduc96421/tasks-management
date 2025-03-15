@@ -23,5 +23,5 @@ app.use(cookieParser("Ducno96421"));
 routeApiVer1(app);
 
 app.listen(port, () => {
-    console.log(`App listening on port ${port}`);
+  console.log(`App listening on port ${port}`);
 });
