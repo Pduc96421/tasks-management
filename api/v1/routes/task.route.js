@@ -17,6 +17,6 @@ router.post("/create", existStatusMiddleware.existStatus, controller.create);
 
 router.patch("/edit/:id", controller.edit);
 
-router.delete("/delete/:id", controller.delete);
+router.delete("/delete/:id", controller.deleteTask);
 
 module.exports = router;
