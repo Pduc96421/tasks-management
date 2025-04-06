@@ -68,6 +68,15 @@ module.exports.login = async (req, res) => {
   });
 };
 
+// // [Post] /api/v1/users/logout
+// module.exports.logout = async (req, res) => {
+//   res.clearCookie("token");
+//   res.json({
+//     code: 200,
+//     message: "Dang xuat thành công",
+//   });
+// };
+
 // [Post] /api/v1/users/password/forgot
 module.exports.forgotPassword = async (req, res) => {
   const email = req.body.email;
@@ -142,7 +151,7 @@ module.exports.otpPassword = async (req, res) => {
 // [Post] /api/v1/users/password/reset
 module.exports.resetPassword = async (req, res) => {
   const password = req.body.password;
-  const token = req.body.token;
+  const token = req.cookies.token;
 
   const user = await User.findOne({
     token: token,
@@ -168,5 +177,21 @@ module.exports.resetPassword = async (req, res) => {
   res.json({
     code: 200,
     message: "doi mat khau thanh cong",
+  });
+};
+
+// [Get] /api/v1/users/detail
+module.exports.detail = async (req, res) => {
+  const token = req.cookies.token;
+
+  const user = await User.findOne({
+    token: token,
+    deleted: false,
+  }).select("-password -token");
+
+  res.json({
+    code: 200,
+    message: "thanh cong",
+    info: user,
   });
 };
